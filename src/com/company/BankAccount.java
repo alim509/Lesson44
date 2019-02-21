@@ -16,18 +16,18 @@ public class BankAccount implements Comparable
         //otherObject is passed in as an Object type so let’s convert it into
         //a BankAccount type object.
         BankAccount otherAccount = (BankAccount) otherObject;
-        int retValue;
+        int retValue = 0;
         int length;
 
         if (name.length() < otherAccount.name.length())
         {
-            length = otherAccount.name.length();
+            length = name.length();
         }
         else
         {
             if(name.length() > otherAccount.name.length())
             {
-                length = name.length();
+                length = otherAccount.name.length();
             }
             else
             {
@@ -36,19 +36,23 @@ public class BankAccount implements Comparable
         }
 
         for(int i = 0; i < length; i++) {
-            char character = name.charAt(i);
-            char otherCharacter = otherAccount.name.charAt(i);
-            if ((int)character < otherCharacter) {
-                retValue = -1;
-            } else {
-                if (balance > otherAccount.balance) {
-                    retValue = 1;
+            for (int j = 0; j < length; i++) {
+                char character = name.charAt(i);
+                char otherCharacter = otherAccount.name.charAt(i);
+                if ((int) character < (int) otherCharacter) {
+                    retValue = -1;
                 } else {
-                    retValue = 0;
+                    if ((int) character > (int) otherCharacter) {
+                        retValue = 1;
+                    } else {
+                        retValue = 0;
+                    }
                 }
             }
-            return retValue;
         }
+            if(retValue)
+        }
+        return retValue;
     }
     public String name;
     public double balance;

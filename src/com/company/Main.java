@@ -11,12 +11,14 @@ public class Main {
         formatter.setMinimumFractionDigits(2);
         formatter.setMaximumFractionDigits(2);
         String name;
+        String sort;
         int j;
+        Scanner kbReader = new Scanner(System.in);
 
         BankAccount ba[] = new BankAccount[5];
 
         for (j = 0; j < ba.length; j++) {
-            Scanner kbReader = new Scanner(System.in);
+            kbReader = new Scanner(System.in);
             System.out.print("Please enter the name to whom the account belongs. ");
             name = kbReader.nextLine();
             System.out.print("Please enter the amount of the deposit. ");
@@ -26,7 +28,18 @@ public class Main {
             ba[j] = new BankAccount(name, amount);
         }
 
-        Arrays.sort(ba);
+        System.out.println("\nSort alphabetical or numerically? A/N?");
+        sort = kbReader.next();
+
+        if(sort.toUpperCase().equals("A")) {
+            for(j = 0; j < ba.length; j++) {
+                BankAccount.compareTo(ba[j]);
+            }
+        }
+        else if(sort.toUpperCase().equals("N")) {
+            Arrays.sort(ba);
+        }
+
         for(j = 0; j < ba.length; j++)
             System.out.println(ba[j].name + " >>> $" + ba[j].balance + "\n");
     }
