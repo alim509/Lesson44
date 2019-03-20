@@ -50,10 +50,13 @@ public class BankAccount implements Comparable
                 }
             }
         }
-            if(retValue)
-        }
         return retValue;
     }
+
+    public String getName() {
+        return name;
+    }
+
     public String name;
     public double balance;
 }

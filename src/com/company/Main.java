@@ -13,6 +13,7 @@ public class Main {
         String name;
         String sort;
         int j;
+        int m = 0;
         Scanner kbReader = new Scanner(System.in);
 
         BankAccount ba[] = new BankAccount[5];
@@ -31,9 +32,18 @@ public class Main {
         System.out.println("\nSort alphabetical or numerically? A/N?");
         sort = kbReader.next();
 
+        BankAccount temp;
+
         if(sort.toUpperCase().equals("A")) {
-            for(j = 0; j < ba.length; j++) {
-                BankAccount.compareTo(ba[j]);
+            while(m != 4) {
+                for (j = 0; j < ba.length - 1; j++) {
+                    if ((int) (ba[j].getName().charAt(0)) > (int) (ba[j + 1].getName().charAt(0))) {
+                        temp = ba[j];
+                        ba[j] = ba[j + 1];
+                        ba[j + 1] = temp;
+                    }
+                }
+                m++;
             }
         }
         else if(sort.toUpperCase().equals("N")) {
